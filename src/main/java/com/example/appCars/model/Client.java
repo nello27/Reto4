@@ -4,12 +4,18 @@
  */
 package com.example.appCars.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import jdk.internal.joptsimple.internal.Messages;
 
 /**
  *
@@ -31,10 +37,25 @@ public class Client {
     private String password;
     @Column(name = "age")
     private String age;
-    @Column(name = "messages")
-    private String messages;
+    
+    @OneToMany(mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    private List<Message> messages;
+
+        
     @Column(name = "reservations")
     private String reservations;
+    
+    
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
 
     public Integer getIdClient() {
         return idClient;
@@ -76,14 +97,6 @@ public class Client {
         this.age = age;
     }
 
-    public String getMessages() {
-        return messages;
-    }
-
-    public void setMessages(String messages) {
-        this.messages = messages;
-    }
-
     public String getReservations() {
         return reservations;
     }
@@ -91,7 +104,5 @@ public class Client {
     public void setReservations(String reservations) {
         this.reservations = reservations;
     }
-    
-    
-    
+
 }

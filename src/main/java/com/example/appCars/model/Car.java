@@ -37,13 +37,29 @@ public class Car {
     @Column(name = "description")
     private String description;
 
-    //Relación con gama
-    @OneToMany(mappedBy = "car")
+    // Relación con gama
     @ManyToOne
     @JoinColumn(name = "gama")
     @JsonIgnoreProperties("car")
     private Gama gama;
+    
+    // Relación con message
 
+    @OneToMany(mappedBy = "car")
+    @JsonIgnoreProperties("car")
+    private List<Message> messages;
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    
+
+      
     public Integer getId() {
         return id;
     }
