@@ -4,6 +4,7 @@
  */
 package com.example.appCars.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class Gama {
 
     @OneToMany(mappedBy = "gama")
     //@JsonIgnoreProperties("gama")
-    @JsonManagedReference("gama-car")
+    @JsonBackReference("gama-car")
     private List<Car> cars;
 
     public List<Car> getCars() {
