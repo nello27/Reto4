@@ -5,7 +5,9 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +35,7 @@ public class Gama {
 
     @OneToMany(mappedBy = "gama")
     @JsonIgnoreProperties("gama")
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     public List<Car> getCars() {
         return cars;
@@ -42,9 +44,8 @@ public class Gama {
     public void setCars(List<Car> cars) {
         this.cars = cars;
     }
-    
-    
-    
+
+
     public Integer getIdGama() {
         return idGama;
     }

@@ -5,6 +5,10 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import javax.persistence.*;
 /**
  *
  * @author macbookpro
@@ -27,47 +31,46 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCar")
-    private Integer id;
+    private Integer idCar;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "brand")
     private String brand;
+
     @Column(name = "year")
     private Integer year;
+
     @Column(name = "description")
     private String description;
 
-    // Relación con gama
+    @Expose
+    @SerializedName("gama")
     @ManyToOne
-    @JoinColumn(name = "gama")
+    @JoinColumn(name = "cars")
     @JsonIgnoreProperties("car")
     private Gama gama;
-    
-    // Relación con message
 
+    @Expose
+    @SerializedName("messages")
     @OneToMany(mappedBy = "car")
     @JsonIgnoreProperties("car")
     private List<Message> messages;
 
-    public List<Message> getMessages() {
-        return messages;
+    public String toJson() {
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().serializeNulls().create();
+        return gson.toJson(this);
     }
 
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
+    public Integer getIdCar() {
+        return idCar;
     }
 
+    public void setIdCar(Integer idCar) {
+        this.idCar = idCar;
+    }
     
-
-      
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -108,6 +111,14 @@ public class Car {
         this.gama = gama;
     }
 
-    
+    public List<Message> getMessages() {
+        return messages;
+    }
 
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+    
+    
+    
 }

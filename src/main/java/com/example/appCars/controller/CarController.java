@@ -53,7 +53,7 @@ public class CarController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Car> actualizar(@RequestBody Car car) {
         //Se busca primero el cliente
-        Car newCar = carservice.findById(car.getId());
+        Car newCar = carservice.findById(car.getIdCar());
         if (newCar != null) {
             //Encontró al cliente con el id
             newCar.setBrand(car.getBrand());

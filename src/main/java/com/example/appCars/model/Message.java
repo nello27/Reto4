@@ -5,6 +5,10 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -28,21 +33,29 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idMessage")
     private Integer idMessage;
+
     @Column(name = "messageText")
     private String messageText;
 
     @ManyToOne
     @JoinColumn(name = "client")
     @JsonIgnoreProperties("message")
+    @Expose
+    @SerializedName("client")
     private Client client;
 
     @ManyToOne
     @JoinColumn(name = "car")
     @JsonIgnoreProperties("message")
+    @Expose
+    @SerializedName("car")
     private Car car;
-    
-    
-    
+
+    public String toJson() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return "[" + gson.toJson(this) + "]";
+    }
+
     public Integer getIdMessage() {
         return idMessage;
     }
@@ -74,6 +87,7 @@ public class Message {
     public void setCar(Car car) {
         this.car = car;
     }
-
+    
+    
     
 }
