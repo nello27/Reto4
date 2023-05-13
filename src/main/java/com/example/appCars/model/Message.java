@@ -41,17 +41,12 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "client")
     @JsonIgnoreProperties("message")
-    @JsonManagedReference // Anotación en el lado propietario de la relación
     @Expose
     @SerializedName("client")
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "car")
-    @JsonIgnoreProperties("message")
-    @JsonManagedReference // Anotación en el lado propietario de la relación
-    @Expose
-    @SerializedName("car")
+    @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
     private Car car;
 
     public String toJson() {
@@ -90,7 +85,5 @@ public class Message {
     public void setCar(Car car) {
         this.car = car;
     }
-    
-    
-    
+
 }

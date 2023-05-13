@@ -22,6 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.*;
+
 /**
  *
  * @author macbookpro
@@ -47,12 +48,10 @@ public class Car {
     @Column(name = "description")
     private String description;
 
-    @Expose
-    @SerializedName("gama")
     @ManyToOne
-    @JoinColumn(name = "cars")
-    @JsonIgnoreProperties("car")
-    @JsonManagedReference // Anotación en el lado propietario de la relación
+    @JoinColumn(name = "gama") // Nombre de la columna de la clave foránea en la tabla "car"
+    @JsonBackReference("gama-car")
+    //private Gama gama;
     private Gama gama;
 
     @Expose
@@ -63,7 +62,11 @@ public class Car {
     private List<Message> messages;
 
     public String toJson() {
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().serializeNulls().create();
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .serializeNulls()
+                .setPrettyPrinting()
+                .create();
         return gson.toJson(this);
     }
 
@@ -74,7 +77,7 @@ public class Car {
     public void setIdCar(Integer idCar) {
         this.idCar = idCar;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -123,6 +126,4 @@ public class Car {
         this.messages = messages;
     }
     
-    
-    
-}
+}   
