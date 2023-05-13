@@ -4,6 +4,7 @@
  */
 package com.example.appCars.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,6 +46,7 @@ public class Client {
     @Expose
     @SerializedName("messages")
     @OneToMany(mappedBy = "client")
+    @JsonBackReference // Anotación en el lado inverso de la relación
     @JsonIgnoreProperties("client")
     private List<Message> messages;
 

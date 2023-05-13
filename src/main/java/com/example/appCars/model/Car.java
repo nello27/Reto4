@@ -4,7 +4,9 @@
  */
 package com.example.appCars.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -50,11 +52,13 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "cars")
     @JsonIgnoreProperties("car")
+    @JsonManagedReference // Anotación en el lado propietario de la relación
     private Gama gama;
 
     @Expose
     @SerializedName("messages")
     @OneToMany(mappedBy = "car")
+    @JsonBackReference // Anotación en el lado inverso de la relación
     @JsonIgnoreProperties("car")
     private List<Message> messages;
 

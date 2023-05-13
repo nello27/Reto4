@@ -5,6 +5,7 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -40,6 +41,7 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "client")
     @JsonIgnoreProperties("message")
+    @JsonManagedReference // Anotación en el lado propietario de la relación
     @Expose
     @SerializedName("client")
     private Client client;
@@ -47,6 +49,7 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "car")
     @JsonIgnoreProperties("message")
+    @JsonManagedReference // Anotación en el lado propietario de la relación
     @Expose
     @SerializedName("car")
     private Car car;
