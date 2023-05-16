@@ -5,6 +5,7 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,9 +29,9 @@ public class Reservation {
     @Column(name = "idReservation")
     private Integer idReservation;
     @Column(name = "startDate")
-    private String startDate;
+    private Date startDate;
     @Column(name = "devolutionDate")
-    private String devolutionDate;
+    private Date devolutionDate;
     @Column(name = "status")
     private String status;
     
@@ -52,6 +53,16 @@ public class Reservation {
     public void prePersist() {
         this.status = "created";
     }
+
+        
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    
     
     public Integer getIdReservation() {
         return idReservation;
@@ -61,19 +72,11 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getDevolutionDate() {
+    public Date getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(String devolutionDate) {
+    public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
