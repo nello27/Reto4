@@ -61,6 +61,13 @@ public class Car {
     //@JsonIgnore
     @JsonIgnoreProperties({"car","messages"})
     private List<Message> messages;
+    
+    @Expose
+    @SerializedName("reservations")
+    @OneToMany(mappedBy = "car")
+    //@JsonIgnore
+    @JsonIgnoreProperties({"car","reservations"})
+    private List<Reservation> reservations;
 
     public String toJson() {
         Gson gson = new GsonBuilder()
@@ -70,6 +77,16 @@ public class Car {
                 .create();
         return gson.toJson(this);
     }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+    
+    
 
     public Integer getIdCar() {
         return idCar;
