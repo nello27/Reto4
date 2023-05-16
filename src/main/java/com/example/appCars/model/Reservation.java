@@ -4,6 +4,7 @@
  */
 package com.example.appCars.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,11 +36,14 @@ public class Reservation {
     
     @ManyToOne
     @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
+    @JsonIgnoreProperties({"messages", "car", "client", "reservations"})
     private Car car;
     
     @ManyToOne
     @JoinColumn(name = "client") // Nombre de la columna de la clave foránea en la tabla "message"
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
+    
     @Column(name = "score")
     private String score;
     
