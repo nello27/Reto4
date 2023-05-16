@@ -47,7 +47,7 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "client")
-    @JsonIgnoreProperties({"message","client"})
+    @JsonIgnoreProperties("client")
     @Expose
     @SerializedName("client")
     private Client client;

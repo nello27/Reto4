@@ -5,7 +5,9 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -28,6 +30,7 @@ import jdk.internal.joptsimple.internal.Messages;
  */
 @Entity
 @Table(name = "clients")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idClient")
 public class Client {
 
     @Id
@@ -43,10 +46,15 @@ public class Client {
     @Column(name = "age")
     private String age;
 
-    @Expose
+    /*@Expose
     @SerializedName("messages")
     @OneToMany(mappedBy = "client")
-    @JsonBackReference // Anotación en el lado inverso de la relación
+    //@JsonBackReference // Anotación en el lado inverso de la relación
+    @JsonIgnoreProperties({"client","messages"})
+    private List<Message> messages;*/
+    
+    @Expose
+    @OneToMany(mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Message> messages;
 
