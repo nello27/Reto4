@@ -59,9 +59,9 @@ public class Client {
     private List<Message> messages;
 
     @Expose
-    @SerializedName("reservations")
-    @Column(name = "reservations")
-    private String reservations;
+    @OneToMany(mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    private List<Reservation> reservations;
 
     public String toJson() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -116,12 +116,14 @@ public class Client {
         this.age = age;
     }
 
-    public String getReservations() {
+    public List<Reservation> getReservations() {
         return reservations;
     }
 
-    public void setReservations(String reservations) {
+    public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
+
+    
 
 }

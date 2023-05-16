@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -40,14 +36,15 @@ public class Message {
     
     @ManyToOne
     @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
-    @JsonIgnoreProperties("message")
+    //@JsonIgnoreProperties("message")
+    @JsonIgnoreProperties({"messages", "reservations"})
     @Expose
     @SerializedName("car")
     private Car car;
 
     @ManyToOne
     @JoinColumn(name = "client")
-    @JsonIgnoreProperties("client")
+    @JsonIgnoreProperties({"messages", "reservations"})
     @Expose
     @SerializedName("client")
     private Client client;

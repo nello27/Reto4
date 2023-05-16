@@ -5,9 +5,11 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -52,6 +54,7 @@ public class Car {
     @Expose
     @ManyToOne
     @JoinColumn(name = "gama")
+    @JsonIgnoreProperties({"car","gama"})
     private Gama gama;
 
 
