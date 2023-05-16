@@ -54,7 +54,7 @@ public class Car {
     @Expose
     @ManyToOne
     @JoinColumn(name = "gama")
-    @JsonIgnoreProperties({"car","gama"})
+    @JsonIgnoreProperties({"car","gama","cars"})
     private Gama gama;
 
 

@@ -37,12 +37,13 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idClient")
     private Integer idClient;
-    @Column(name = "name")
-    private String name;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
     private String password;
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "age")
     private String age;
 
@@ -52,7 +53,6 @@ public class Client {
     //@JsonBackReference // Anotación en el lado inverso de la relación
     @JsonIgnoreProperties({"client","messages"})
     private List<Message> messages;*/
-    
     @Expose
     @OneToMany(mappedBy = "client")
     @JsonIgnoreProperties("client")
@@ -123,7 +123,5 @@ public class Client {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-
-    
 
 }
