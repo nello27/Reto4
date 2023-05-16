@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 /**
@@ -31,15 +32,23 @@ public class Reservation {
     private String devolutionDate;
     @Column(name = "status")
     private String status;
+    
     @ManyToOne
     @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
     private Car car;
+    
     @ManyToOne
     @JoinColumn(name = "client") // Nombre de la columna de la clave foránea en la tabla "message"
     private Client client;
     @Column(name = "score")
     private String score;
-
+    
+    
+    @PrePersist
+    public void prePersist() {
+        this.status = "created";
+    }
+    
     public Integer getIdReservation() {
         return idReservation;
     }

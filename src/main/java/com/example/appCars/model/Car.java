@@ -5,6 +5,7 @@
 package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.gson.Gson;
@@ -48,18 +49,17 @@ public class Car {
     @Column(name = "description")
     private String description;
 
+    @Expose
     @ManyToOne
-    @JoinColumn(name = "gama") // Nombre de la columna de la clave foránea en la tabla "car"
-    @JsonBackReference("gama-car")
-    //private Gama gama;
-    //@JsonManagedReference("gama-car")
+    @JoinColumn(name = "gama")
     private Gama gama;
+
 
     @Expose
     @SerializedName("messages")
     @OneToMany(mappedBy = "car")
-    @JsonBackReference // Anotación en el lado inverso de la relación
-    @JsonIgnoreProperties("car")
+    //@JsonIgnore
+    @JsonIgnoreProperties({"car","messages"})
     private List<Message> messages;
 
     public String toJson() {

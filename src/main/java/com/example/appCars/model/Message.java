@@ -37,17 +37,22 @@ public class Message {
 
     @Column(name = "messageText")
     private String messageText;
+    
+    @ManyToOne
+    @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
+    @JsonIgnoreProperties("message")
+    @Expose
+    @SerializedName("car")
+    private Car car;
 
     @ManyToOne
     @JoinColumn(name = "client")
-    @JsonIgnoreProperties("message")
+    @JsonIgnoreProperties({"message","client"})
     @Expose
     @SerializedName("client")
     private Client client;
 
-    @ManyToOne
-    @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
-    private Car car;
+
 
     public String toJson() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
