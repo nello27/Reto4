@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @CrossOrigin("*")  //acepte todas las peticiones entrantes
-@RequestMapping("/Car") //RequestMapping completa el endpoint
+@RequestMapping("/api/Car") //RequestMapping completa el endpoint
 public class CarController {
 
     @Autowired

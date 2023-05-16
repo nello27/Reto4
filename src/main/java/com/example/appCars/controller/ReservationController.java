@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @CrossOrigin("*")  //acepte todas las peticiones entrantes
-@RequestMapping("/Reservation") //RequestMapping completa el endpoint
+@RequestMapping("/api/Reservation") //RequestMapping completa el endpoint
 public class ReservationController {
     
     @Autowired

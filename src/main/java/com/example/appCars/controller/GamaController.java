@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @CrossOrigin("*")  //acepte todas las peticiones entrantes
-@RequestMapping("/Gama") //RequestMapping completa el endpoint
+@RequestMapping("/api/Gama") //RequestMapping completa el endpoint
 class GamaController {
 
     @Autowired

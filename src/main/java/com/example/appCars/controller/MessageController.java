@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @CrossOrigin("*")  //acepte todas las peticiones entrantes
-@RequestMapping("/Message") //RequestMapping completa el endpoint
+@RequestMapping("/api/Message") //RequestMapping completa el endpoint
 public class MessageController {
 
     @Autowired
