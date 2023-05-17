@@ -47,6 +47,7 @@ public class Message {
     @JsonIgnoreProperties("car")
     @Expose
     @SerializedName("message")
+    @JsonIgnore
     private Message message;
 
     @ManyToOne
