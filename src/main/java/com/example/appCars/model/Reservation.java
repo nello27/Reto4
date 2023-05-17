@@ -4,6 +4,7 @@
  */
 package com.example.appCars.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "reservation")
 public class Reservation {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idReservation")
@@ -34,27 +35,43 @@ public class Reservation {
     private Date devolutionDate;
     @Column(name = "status")
     private String status;
-    
+
     @ManyToOne
     @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
     @JsonIgnoreProperties({"messages", "car", "client", "reservations"})
     private Car car;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "messages")
+    @JsonIgnoreProperties({"car","message","client"})
+    private Message messages;
+
     @ManyToOne
     @JoinColumn(name = "client") // Nombre de la columna de la clave foránea en la tabla "message"
-    @JsonIgnoreProperties({"messages", "reservations"})
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
-    
+
     @Column(name = "score")
     private String score;
-    
-    
+
     @PrePersist
     public void prePersist() {
         this.status = "created";
+        // Obtener el objeto Message con ID 1 desde la base de datos o el repositorio
+        Message message = new Message();
+        message.setIdMessage(1);
+
+        this.messages = message;
     }
 
-        
+    public Message getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Message messages) {
+        this.messages = messages;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
@@ -62,8 +79,7 @@ public class Reservation {
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
-    
-    
+
     public Integer getIdReservation() {
         return idReservation;
     }
@@ -111,7 +127,9 @@ public class Reservation {
     public void setScore(String score) {
         this.score = score;
     }
-    
-    
-    
+
+    public Message orElse(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
