@@ -46,35 +46,35 @@ public class Car {
     @Column(name = "description")
     private String description;
 
-    @Expose
+    //@Expose
     @ManyToOne
     @JoinColumn(name = "gama")
     @JsonIgnoreProperties({"car","gama","cars"})
     private Gama gama;
 
 
-    @Expose
-    @SerializedName("messages")
+   // @Expose
+    //@SerializedName("messages")
     @OneToMany(mappedBy = "car")
     //@JsonIgnore
     @JsonIgnoreProperties({"car","messages"})
     private List<Message> messages;
     
-    @Expose
-    @SerializedName("reservations")
+   // @Expose
+    //@SerializedName("reservations")
     @OneToMany(mappedBy = "car")
     //@JsonIgnore
     @JsonIgnoreProperties({"car","reservations"})
     private List<Reservation> reservations;
 
-    public String toJson() {
+    /*public String toJson() {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .serializeNulls()
                 .setPrettyPrinting()
                 .create();
         return gson.toJson(this);
-    }
+    }*/
 
     public List<Reservation> getReservations() {
         return reservations;
@@ -82,6 +82,14 @@ public class Car {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
     
     
@@ -110,14 +118,10 @@ public class Car {
         this.brand = brand;
     }
 
-    public Integer getYear() {
-        return year;
-    }
 
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
+    
+    
+    
     public String getDescription() {
         return description;
     }

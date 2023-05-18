@@ -40,15 +40,6 @@ public class Message {
     @Expose
     @SerializedName("car")
     private Car car;
-    
-    @ManyToOne
-    @JoinColumn(name = "message") // Nombre de la columna de la clave foránea en la tabla "message"
-    //@JsonIgnoreProperties("message")
-    @JsonIgnoreProperties("car")
-    @Expose
-    @SerializedName("message")
-    @JsonIgnore
-    private Message message;
 
     @ManyToOne
     @JoinColumn(name = "client")
@@ -57,33 +48,23 @@ public class Message {
     @SerializedName("client")
     private Client client;
     
-    @OneToMany(mappedBy = "message")
+    /*@OneToMany(mappedBy = "message")
     @JsonIgnore
-    private List<Message> reservations;
+    private List<Message> reservations;*/
 
     public String toJson() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return "[" + gson.toJson(this) + "]";
     }
 
-    public List<Message> getReservations() {
+    /*public List<Message> getReservations() {
         return reservations;
     }
 
     public void setReservations(List<Message> reservations) {
         this.reservations = reservations;
-    }
+    }*/
 
-    
-    
-    public Message getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
-    }
-    
 
     public Integer getIdMessage() {
         return idMessage;
