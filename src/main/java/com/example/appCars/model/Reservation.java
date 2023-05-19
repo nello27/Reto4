@@ -4,6 +4,7 @@
  */
 package com.example.appCars.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
@@ -38,12 +39,14 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
-    @JsonIgnoreProperties({"messages", "car", "client", "reservations"})
+    @JsonIgnoreProperties({"client", "reservations"})
+    //"car", "client", "reservations"
     private Car car;
 
     @ManyToOne
     @JoinColumn(name = "messages")
-    @JsonIgnoreProperties({"car","message","client"})
+    //@JsonIgnoreProperties({"car","messages","client"})
+    @JsonIgnore
     private Message messages;
 
     @ManyToOne

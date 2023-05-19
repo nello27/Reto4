@@ -57,7 +57,7 @@ public class Car {
     //@SerializedName("messages")
     @OneToMany(mappedBy = "car")
     //@JsonIgnore
-    @JsonIgnoreProperties({"car","messages"})
+    @JsonIgnoreProperties({"car","messages","client"})
     private List<Message> messages;
     
    // @Expose
