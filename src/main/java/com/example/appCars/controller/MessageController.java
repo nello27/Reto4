@@ -48,5 +48,6 @@ public class MessageController {
         Message newMessage = messageservice.save(message);
         return new ResponseEntity<>(newMessage, HttpStatus.CREATED);
     }
+    
 
 }

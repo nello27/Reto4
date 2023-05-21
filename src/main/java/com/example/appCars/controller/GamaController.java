@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,4 +49,42 @@ class GamaController {
         Gama newCar = gamaservice.save(gama);
         return new ResponseEntity<>(newCar, HttpStatus.CREATED);
     }
+
+    //Petición PUT para actualizar
+    @PutMapping(value = "/update")
+
+    public ResponseEntity<Gama> actualizar(@RequestBody Gama gama) {
+        // Obtener el ID del objeto Gama del JSON
+        Integer id = gama.getIdGama();
+
+        // Buscar la gama por su ID
+        Gama newGama = gamaservice.findById(id);
+        if (newGama != null) {
+            // Actualizar los campos de gama con los datos del Request
+            newGama.setName(gama.getName());
+            newGama.setDescription(gama.getDescription());
+
+            Gama updatedGama = gamaservice.save(newGama);
+
+            return new ResponseEntity<>(updatedGama, HttpStatus.OK);
+        } else {
+            // No lo encontró
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
+        // Buscar la gama por su ID
+        Gama gama = gamaservice.findById(id);
+        if (gama != null) {
+            // Eliminar gama
+            gamaservice.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            // No se encontró gama
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
