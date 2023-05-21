@@ -7,9 +7,6 @@ package com.example.appCars.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,26 +40,13 @@ public class Client {
     @Column(name = "age")
     private Integer age;
 
-    /*@Expose
-    @SerializedName("messages")
-    @OneToMany(mappedBy = "client")
-    //@JsonBackReference // Anotación en el lado inverso de la relación
-    @JsonIgnoreProperties({"client","messages"})
-    private List<Message> messages;*/
-    @Expose
     @OneToMany(mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Message> messages;
 
-    @Expose
     @OneToMany(mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Reservation> reservations;
-
-    public String toJson() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return "[" + gson.toJson(this) + "]";
-    }
 
     public List<Message> getMessages() {
         return messages;
