@@ -27,19 +27,19 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCar")
+
     private Integer idCar;
 
-    @Column(name = "name")
+
     private String name;
 
-    @Column(name = "brand")
+
     private String brand;
 
-    @Column(name = "year")
+
     private Integer year;
 
-    @Column(name = "description")
+
     private String description;
 
     @ManyToOne

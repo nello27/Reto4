@@ -23,7 +23,7 @@ public class Score {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idScore")
+
     private Integer idScore;
 
     private String messageText;

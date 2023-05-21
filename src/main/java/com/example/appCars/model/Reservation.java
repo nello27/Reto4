@@ -4,7 +4,6 @@
  */
 package com.example.appCars.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import javax.persistence.Column;
@@ -27,13 +26,13 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idReservation")
+
     private Integer idReservation;
-    @Column(name = "startDate")
+
     private Date startDate;
-    @Column(name = "devolutionDate")
+
     private Date devolutionDate;
-    @Column(name = "status")
+
     private String status = "created";
 
     @ManyToOne

@@ -20,10 +20,10 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idMessage")
+
     private Integer idMessage;
 
-    @Column(name = "messageText")
+
     private String messageText;
 
     @ManyToOne

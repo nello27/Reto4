@@ -26,11 +26,11 @@ public class Gama {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idGama")
+
     private Integer idGama;
-    @Column(name = "name")
+
     private String name;
-    @Column(name = "description")
+
     private String description;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "gama")

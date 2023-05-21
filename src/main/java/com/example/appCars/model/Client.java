@@ -25,16 +25,15 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idClient")
+
     private Integer idClient;
-    @Column(name = "email")
+
     private String email;
-    @Column(name = "password")
+
     private String password;
-    @Column(name = "name")
+
     private String name;
 
-    @Column(name = "age")
     private Integer age;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")

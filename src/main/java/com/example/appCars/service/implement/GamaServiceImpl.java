@@ -32,7 +32,8 @@ public class GamaServiceImpl implements GamaService {
 
     @Override
     public void delete(Integer id) {
-
+        
+        gamadao.deleteById(id);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
