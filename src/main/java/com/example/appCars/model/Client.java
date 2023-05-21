@@ -4,10 +4,9 @@
  */
 package com.example.appCars.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "clients")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idClient")
 public class Client {
 
     @Id
@@ -40,11 +38,11 @@ public class Client {
     @Column(name = "age")
     private Integer age;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Message> messages;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Reservation> reservations;
 

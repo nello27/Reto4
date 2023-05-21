@@ -5,6 +5,7 @@
 package com.example.appCars.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,10 +31,9 @@ public class Gama {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "gama")
-    @JsonIgnoreProperties({"gama","messages","reservations"})
-    //@JsonBackReference("gama-car")
-    //@JsonIgnoreProperties({"gama","car"})
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "gama")
+    @JsonIgnoreProperties("gama")
+
     private List<Car> cars;
 
     public List<Car> getCars() {

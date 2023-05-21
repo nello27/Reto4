@@ -27,13 +27,13 @@ public class Message {
     private String messageText;
     
     @ManyToOne
-    @JoinColumn(name = "car") // Nombre de la columna de la clave foránea en la tabla "message"
+    @JoinColumn(name = "carId") // Nombre de la columna de la clave foránea en la tabla "message"
     //@JsonIgnoreProperties("message")
     @JsonIgnoreProperties({"messages", "reservations"})
     private Car car;
 
     @ManyToOne
-    @JoinColumn(name = "client")
+    @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
     

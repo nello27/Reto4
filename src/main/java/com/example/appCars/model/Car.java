@@ -7,6 +7,7 @@ package com.example.appCars.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,35 +43,22 @@ public class Car {
     @Column(name = "description")
     private String description;
 
-    //@Expose
     @ManyToOne
-    @JoinColumn(name = "gama")
-    @JsonIgnoreProperties({"car","gama","cars"})
+    @JoinColumn(name = "gamaId")
+    @JsonIgnoreProperties("cars")
     private Gama gama;
 
 
-   // @Expose
-    //@SerializedName("messages")
-    @OneToMany(mappedBy = "car")
-    //@JsonIgnore
-    @JsonIgnoreProperties({"car","messages","client"})
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "car")
+    @JsonIgnoreProperties({"car","client"})
     private List<Message> messages;
     
-   // @Expose
-    //@SerializedName("reservations")
-    @OneToMany(mappedBy = "car")
-    //@JsonIgnore
-    @JsonIgnoreProperties({"car","reservations"})
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
+    @JsonIgnoreProperties({"car", "client"})
     private List<Reservation> reservations;
 
-    /*public String toJson() {
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .serializeNulls()
-                .setPrettyPrinting()
-                .create();
-        return gson.toJson(this);
-    }*/
+
 
     public List<Reservation> getReservations() {
         return reservations;
