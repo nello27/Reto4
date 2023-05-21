@@ -45,28 +45,12 @@ public class Client {
     @JsonIgnoreProperties("client")
     private List<Reservation> reservations;
 
-    public List<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
-
     public Integer getIdClient() {
         return idClient;
     }
 
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -85,12 +69,28 @@ public class Client {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getAge() {
         return age;
     }
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 
     public List<Reservation> getReservations() {
@@ -100,5 +100,7 @@ public class Client {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
+
+    
 
 }

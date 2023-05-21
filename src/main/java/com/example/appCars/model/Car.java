@@ -55,22 +55,6 @@ public class Car {
     @JsonIgnoreProperties({"car", "client"})
     private List<Reservation> reservations;
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
     public Integer getIdCar() {
         return idCar;
     }
@@ -93,6 +77,14 @@ public class Car {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getDescription() {
@@ -118,5 +110,14 @@ public class Car {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+  
 
 }

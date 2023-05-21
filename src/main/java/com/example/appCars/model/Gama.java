@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -35,14 +36,6 @@ public class Gama {
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "gama")
     @JsonIgnoreProperties("gama")
     private List<Car> cars;
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
 
     public Integer getIdGama() {
         return idGama;
@@ -68,4 +61,13 @@ public class Gama {
         this.description = description;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    
 }

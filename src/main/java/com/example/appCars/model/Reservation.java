@@ -51,12 +51,12 @@ public class Reservation {
     @JoinColumn(name = "reservations")
     private Score score;
 
-    public Score getScore() {
-        return score;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setScore(Score score) {
-        this.score = score;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
@@ -65,14 +65,6 @@ public class Reservation {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
-    }
-
-    public Integer getIdReservation() {
-        return idReservation;
-    }
-
-    public void setIdReservation(Integer idReservation) {
-        this.idReservation = idReservation;
     }
 
     public Date getDevolutionDate() {
@@ -107,4 +99,13 @@ public class Reservation {
         this.client = client;
     }
 
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+    
 }
