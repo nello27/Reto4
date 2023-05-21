@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author macbookpro
  */
 @RestController
-@CrossOrigin("*")  //acepte todas las peticiones entrantes
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT, RequestMethod.DELETE})  //acepte todas las peticiones entrantes
 @RequestMapping("/api/Gama") //RequestMapping completa el endpoint
 class GamaController {
 
