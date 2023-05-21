@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author macbookpro
  */
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT, RequestMethod.DELETE})  //acepte todas las peticiones entrantes
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})  //acepte todas las peticiones entrantes
 @RequestMapping("/api/Gama") //RequestMapping completa el endpoint
 class GamaController {
 
@@ -41,7 +41,7 @@ class GamaController {
     public Gama consultarporId(@PathVariable Integer id) {
         return gamaservice.findById(id);
     }
-    
+
     @PostMapping(value = "/save")
     public ResponseEntity<Gama> agregar(@RequestBody Gama gama) {
         Gama newCar = gamaservice.save(gama);

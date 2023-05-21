@@ -17,15 +17,15 @@ import org.springframework.stereotype.Service;
  * @author macbookpro
  */
 @Service
-public class ScoreServiceImpl implements ScoreService{
+public class ScoreServiceImpl implements ScoreService {
 
     @Autowired
     private ScoreDao acoredao;
-    
+
     @Override
     @Transactional
     public Score save(Score score) {
-        
+
         return acoredao.save(score);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -37,16 +37,16 @@ public class ScoreServiceImpl implements ScoreService{
 
     @Override
     public Score findById(Integer id) {
-        
+
         return acoredao.findById(id).orElse(null);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Score> findAll() {
-        
+
         return (List<Score>) acoredao.findAll();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

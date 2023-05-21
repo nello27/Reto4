@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.example.appCars.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -31,9 +32,8 @@ public class Gama {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "gama")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "gama")
     @JsonIgnoreProperties("gama")
-
     private List<Car> cars;
 
     public List<Car> getCars() {
@@ -43,7 +43,6 @@ public class Gama {
     public void setCars(List<Car> cars) {
         this.cars = cars;
     }
-
 
     public Integer getIdGama() {
         return idGama;
@@ -68,6 +67,5 @@ public class Gama {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 }

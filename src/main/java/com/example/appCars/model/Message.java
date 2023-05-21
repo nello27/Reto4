@@ -25,7 +25,7 @@ public class Message {
 
     @Column(name = "messageText")
     private String messageText;
-    
+
     @ManyToOne
     @JoinColumn(name = "carId") // Nombre de la columna de la clave foránea en la tabla "message"
     //@JsonIgnoreProperties("message")
@@ -36,7 +36,6 @@ public class Message {
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
-    
 
     public Integer getIdMessage() {
         return idMessage;

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author macbookpro
  */
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT, RequestMethod.DELETE})  //acepte todas las peticiones entrantes
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})  //acepte todas las peticiones entrantes
 @RequestMapping("/api/Message") //RequestMapping completa el endpoint
 public class MessageController {
 

@@ -18,14 +18,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MessageServiceImpl implements MessageService {
-    
+
     @Autowired
     private MessageDao messagedao;
-        
+
     @Override
     @Transactional
     public Message save(Message message) {
-        
+
         return messagedao.save(message);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -37,18 +37,17 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Message findById(Integer id) {
-        
+
         return messagedao.findById(id).orElse(null);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Message> findAll() {
-        
+
         return (List<Message>) messagedao.findAll();
-        
-        
+
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

@@ -4,7 +4,6 @@
  */
 package com.example.appCars.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -48,17 +47,13 @@ public class Car {
     @JsonIgnoreProperties("cars")
     private Gama gama;
 
-
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "car")
-    @JsonIgnoreProperties({"car","client"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
+    @JsonIgnoreProperties({"car", "client"})
     private List<Message> messages;
-    
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
     @JsonIgnoreProperties({"car", "client"})
     private List<Reservation> reservations;
-
-
 
     public List<Reservation> getReservations() {
         return reservations;
@@ -75,8 +70,6 @@ public class Car {
     public void setYear(Integer year) {
         this.year = year;
     }
-    
-    
 
     public Integer getIdCar() {
         return idCar;
@@ -101,7 +94,7 @@ public class Car {
     public void setBrand(String brand) {
         this.brand = brand;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -125,5 +118,5 @@ public class Car {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
-    
-}   
+
+}

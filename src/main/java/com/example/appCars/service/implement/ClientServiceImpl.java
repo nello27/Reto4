@@ -12,42 +12,41 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 /**
  *
  * @author macbookpro
  */
 @Service
-public class ClientServiceImpl implements ClientService{
-        
+public class ClientServiceImpl implements ClientService {
+
     @Autowired
     private ClientDao clientdao;
 
     @Override
     @Transactional
     public Client save(Client client) {
-        
+
         return clientdao.save(client);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void delete(Integer id) {
-        
+
         clientdao.deleteById(id);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public Client findById(Integer id) {
-        
+
         return clientdao.findById(id).orElse(null);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Client> findAll() {
-        
+
         return (List<Client>) clientdao.findAll();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

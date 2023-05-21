@@ -20,16 +20,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "score")
 public class Score {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idScore")
     private Integer idScore;
-    
+
     private String messageText;
-    
+
     private Integer stars;
-    
+
     @OneToOne
     @JsonIgnoreProperties("score")
     private Reservation reservation;
@@ -65,7 +65,5 @@ public class Score {
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
-    
-    
-    
+
 }

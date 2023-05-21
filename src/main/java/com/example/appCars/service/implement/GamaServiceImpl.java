@@ -17,39 +17,37 @@ import org.springframework.stereotype.Service;
  * @author macbookpro
  */
 @Service
-public class GamaServiceImpl implements GamaService{
-    
-    
+public class GamaServiceImpl implements GamaService {
+
     @Autowired
     private GamaDao gamadao;
-        
+
     @Override
     @Transactional
     public Gama save(Gama gama) {
-        
+
         return gamadao.save(gama);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void delete(Integer id) {
-        
-        
+
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public Gama findById(Integer id) {
-        
+
         return gamadao.findById(id).orElse(null);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Gama> findAll() {
-        
+
         return (List<Gama>) gamadao.findAll();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

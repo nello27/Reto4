@@ -58,7 +58,7 @@ public class Reservation {
     public void setScore(Score score) {
         this.score = score;
     }
-    
+
     public Date getStartDate() {
         return startDate;
     }
@@ -106,6 +106,5 @@ public class Reservation {
     public void setClient(Client client) {
         this.client = client;
     }
-
 
 }

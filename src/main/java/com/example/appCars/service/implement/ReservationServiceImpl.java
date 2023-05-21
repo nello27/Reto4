@@ -25,27 +25,27 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     @Transactional
     public Reservation save(Reservation reservation) {
-        
+
         return reservationdao.save(reservation);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void delete(Integer id) {
-        
+
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public Reservation findById(Integer id) {
-        
+
         return reservationdao.findById(id).orElse(null);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Reservation> findAll() {
-        
+
         return (List<Reservation>) reservationdao.findAll();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
